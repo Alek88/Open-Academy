@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        #form view
+        <record id="openacademy_teacher_form" model="ir.ui.view">
+            <field name="name">Open academy teacher form</field>
+            <field name="model">openacademy.teacher</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="teacher_level"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        #search
+        <record id="openacademy_teacher_search" model="ir.ui.view">
+            <field name="name">Open academy teacher search</field>
+            <field name="model">openacademy.teacher</field>
+            <field name="arch" type="xml">
+               <search>
+                   <field name="teacher_level"/>
+               </search>
+            </field>
+        </record>
+
+        #menu
+        <record id='openacademy_teacher' model='ir.actions.act_window'>
+            <field name="name">Open academy teacher</field>
+            <field name="res_model">openacademy.teacher</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Open academy" id="openacademy_menu"/>
+        <menuitem name="Teachers" id="teachers" parent="openacademy_menu" action="openacademy_teacher"/>
+    </data>
+</odoo>

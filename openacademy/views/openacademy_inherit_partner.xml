@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        #form inherit
+        <record id="openacademy_partner_form" model="ir.ui.view">
+            <field name="name">Partner form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="inh_sessions"/>
+                    <field name="inh_instructor"/>
+                    <field name="inh_teacher"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+
