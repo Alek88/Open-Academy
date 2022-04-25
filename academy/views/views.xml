@@ -1,0 +1,92 @@
+<odoo>
+  <data>
+
+    <!-- MODEL COURSES -->
+    <record id="academy_courses_search" model="ir.ui.view">
+      <field name="name">Academy courses: search</field>
+      <field name="model">academy.courses</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="teacher_id"/>
+        </search>
+      </field>
+    </record>
+
+    <!-- explicit list view definition -->
+    <record id="academy_courses_list" model="ir.ui.view">
+      <field name="name">Academy courses: list</field>
+      <field name="model">academy.courses</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="teacher_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="academy_courses_form" model="ir.ui.view">
+      <field name="name">Academy courses: form</field>
+      <field name="model">academy.courses</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <field name="name"/>
+            <field name="teacher_id"/>
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="message_ids" widget="mail_thread"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <!-- MODEL TEACHERS -->
+    <!-- explicit list view definition -->
+    <record id="academy_teacher_form" model="ir.ui.view">
+      <field name="name">Academy teacher: form</field>
+      <field name="model">academy.teachers</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <field name="name"/>
+            <field name="biography"/>
+            <field name="course_ids"/>
+              <tree editable="bottom">
+                <field name="name"/>
+              </tree>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on model teachers -->
+    <record model="ir.actions.act_window" id="academy_teachers_action_window">
+      <field name="name">Academy teachers</field>
+      <field name="res_model">academy.teachers</field>
+    </record>
+
+    <!-- actions opening views on model courses-->
+    <record model="ir.actions.act_window" id="academy_courses_action_window">
+      <field name="name">Academy courses</field>
+      <field name="res_model">academy.courses</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Academy" id="menu_academy_root" sequence="0"/>
+
+    <!-- menu categories -->
+    <menuitem name="Academy content" id="menu_academy_content" parent="menu_academy_root"/>
+
+    <!-- actions teacers-->
+    <menuitem name="Teachers" id="menu_academy_content_teachers" parent="menu_academy_content"
+              action="academy_teachers_action_window"/>
+
+    <!-- actions courses-->
+    <menuitem name="Courses" id="menu_academy_content_courses" parent="menu_academy_content"
+              action="academy_courses_action_window"/>
+
+
+  </data>
+</odoo>
